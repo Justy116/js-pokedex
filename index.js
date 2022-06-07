@@ -14,7 +14,8 @@ function showPokemon() {
                     <p>Type: ${data.types[0].type.name}</p>
                 </div>
             </div>`;
-      });
+      })
+      .catch(error=>alert("Error",error.message))
   }
 }
 showPokemon();
