@@ -1,10 +1,9 @@
 let containerCard = document.querySelector(".container__card");
 
-function showPokemon() {
+async function showPokemon() {
   for (i = 1; i <= 151; i++) {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
-      .then((res) => res.json())
-      .then((data) => {
+    let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+      let data = await response.json()
         containerCard.innerHTML +=
            `<div class="card ${data.types[0].type.name}">
                 <img src="${data.sprites.front_default}" alt="">
@@ -14,8 +13,7 @@ function showPokemon() {
                     <p>Type: ${data.types[0].type.name}</p>
                 </div>
             </div>`;
-      })
-      .catch(error=>alert("Error",error.message))
+    
   }
 }
 showPokemon();
